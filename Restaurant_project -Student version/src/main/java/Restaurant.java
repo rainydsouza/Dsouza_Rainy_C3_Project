@@ -75,6 +75,20 @@ public class Restaurant {
         return LocalTime.now();
     }
 
+    public int findTotalPrice(List<String> itemName) {
 
+
+        int total_price = 0;
+        for (String foodItem :itemName) {
+            for(Item item : menu){
+                if(item.getName().equals(foodItem)){
+                    total_price = total_price + item.getPrice();
+                }
+            }
+
+        }
+        return total_price;
+
+    }
 }
 
