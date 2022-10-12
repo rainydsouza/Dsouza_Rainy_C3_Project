@@ -74,5 +74,7 @@ public class Restaurant {
     public LocalTime getCurrentTime() {
         return LocalTime.now();
     }
+
+
 }
 

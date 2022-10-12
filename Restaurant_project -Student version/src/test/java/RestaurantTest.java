@@ -6,11 +6,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 
@@ -76,4 +76,18 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void when_items_are_selected_the_total_price_should_be_generated(){
+
+            Restaurant mockito_restaurant=Mockito.spy(restaurant);
+            mockito_restaurant.addToMenu("Burger",212);
+            mockito_restaurant.addToMenu("Pizza",410);
+            mockito_restaurant.addToMenu("Taco",115);
+            List<String> selected_items=new ArrayList<>();
+            selected_items.add("Burger");
+            selected_items.add("Pizza");
+            selected_items.add("Taco");
+            assertEquals(737,mockito_restaurant.findTotalPrice(selected_items));
+    }
 }
